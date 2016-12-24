@@ -23,7 +23,8 @@ class TestLinkedList{
 			System.out.println("4. To add a node at position.");
 			System.out.println("5. To display linked list.");
 			System.out.println("6. To display linked list using recursion.");
-			System.out.println("7. To delete from beginning.");
+			System.out.println("7. To delete node from beginning.");
+			System.out.println("8. To delete node from end.");
 			System.out.println("0. To exit.");
 			Scanner scanner=new Scanner(System.in);
 			int n=scanner.nextInt();
@@ -92,6 +93,9 @@ class TestLinkedList{
 					break;
 				case 7:
 					ll.DeleteBeg();
+					break;
+				case 8:
+					ll.DeleteEnd();
 					break;
 				default:
 					return ;
@@ -205,10 +209,27 @@ class LinkedList{
 			System.out.println("Linked list is empty.");
 		}
 		else{
-			System.out.println("1st node is delete from the beginning.");
+			System.out.println("1st node is deleted from the beginning.");
 			head=head.getNext();
 
 		}
 	}
-	
+	public void DeleteEnd(){
+		if(head==null){
+			System.out.println("Linked list is empty.");
+		}
+		else{
+			Node curr;
+			Node prev;
+			prev=head;
+			curr=head; 
+			while(curr.getNext()!=null){
+				prev=curr;
+				curr=curr.getNext();
+			}
+			System.out.println("Last node is deleted from the beginning.");
+			curr=null;
+			prev.setNext(null);
+		}
+	}
 }
