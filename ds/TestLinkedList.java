@@ -22,10 +22,7 @@ class TestLinkedList{
 			System.out.println("3. To add a node at end.");
 			System.out.println("4. To add a node at position.");
 			System.out.println("5. To display linked list.");
-			//System.out.println("3. To display top element");
-			//System.out.println("4. To print stack");
-			//System.out.println("5. To check stack is empty ");
-			//System.out.println("6. To check stack is full");
+			System.out.println("6. To display linked list using recursion.");
 			System.out.println("0. To exit.");
 			Scanner scanner=new Scanner(System.in);
 			int n=scanner.nextInt();
@@ -79,6 +76,17 @@ class TestLinkedList{
 					else{
 						System.out.println("Linked list is: \n");
 						ll.printLinked();	
+					}
+					break;
+				case 6:
+					if(ll==null){
+						System.out.println("Linked list is empty.\n Create linked list first.");
+						return ;
+//warning
+					}
+					else{
+						ll.recdis();
+						System.out.println();	
 					}
 					break;
 				default:
@@ -174,5 +182,18 @@ class LinkedList{
 
 
 	}
-	
+	public void recdis(){
+		System.out.print("Printing Node Values ");
+		recPrint(head);
+	}
+
+	public void recPrint(Node currNode){
+		if(currNode==null){
+			return;
+		}
+		else{
+			System.out.print("--> " + currNode.getVal());
+			recPrint(currNode.getNext());
+		}
+	}
 }
