@@ -113,6 +113,19 @@ class BinaryTree{
 			System.out.println(curr.getVal());
 		}
 	}
+	public void Leaf(Node curr){
+		if(curr==null) return;
+		else{
+			if(curr.getLeft()==null && curr.getRight()==null)
+			System.out.println(curr.getVal());
+			Leaf(curr.getLeft());
+			Leaf(curr.getRight());
+		}
+	}
+	public void LeafNode(){
+		 Leaf(root);
+	}
+
 
 	public int heightTree(Node curr){
 		if(curr==null) return 0;
@@ -166,6 +179,7 @@ class Tree{
 			System.out.println("4. To display in preorder.");
 			System.out.println("5. To display in postorder.");
 			System.out.println("6. To find the height of the tree.");
+			System.out.println("7. To find the leaf node.");
 			System.out.println("0. To exit.");
 			Scanner scanner=new Scanner(System.in);
 			int n=scanner.nextInt();
@@ -192,6 +206,10 @@ class Tree{
 					break;
 				case 6:
 					System.out.println("Height of tree is:" + bt.height());
+					break;
+				case 7:
+					System.out.println("Leaf node:" );
+					bt.LeafNode();
 					break;
 				default:
 					return;
