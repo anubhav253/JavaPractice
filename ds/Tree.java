@@ -134,7 +134,8 @@ class BinaryTree{
 	}
 
 	int max(int a, int b){
-		return a>b ? a : b;
+		if(a>b) return a;
+		else return b;
 	}
 
 	/*public void levelOrder(Node curr){
@@ -164,6 +165,7 @@ class Tree{
 			System.out.println("3. To display in inOrder.");
 			System.out.println("4. To display in preorder.");
 			System.out.println("5. To display in postorder.");
+			System.out.println("6. To find the height of the tree.");
 			System.out.println("0. To exit.");
 			Scanner scanner=new Scanner(System.in);
 			int n=scanner.nextInt();
@@ -187,6 +189,9 @@ class Tree{
 				case 5:
 					System.out.println("Tree in postorder traversal.");
 					bt.printPostTree();
+					break;
+				case 6:
+					System.out.println("Height of tree is:" + bt.height());
 					break;
 				default:
 					return;
