@@ -1,66 +1,58 @@
 import java.util.*;
-class Node{
-	int top;
+class Queue{
+	int rear, front,size;
 	int[] a;
-	int size;
-	Node(int size){
+	Queue(int size){
 		this.size=size;
-		top=-1;
+		rear=-1;
+		front=0;
 		a=new int[size];
 	}
-
-
-	public void push(int n){
-		a[++top] = n;
-	}
-	public int pop(){
-		return a[top--];
-		
-	}
-	public int display(){
-		 return a[top];
-
-	}
 	public boolean isEmpty(){
-		if(top==-1){
-
-			//System.out.println("Stack is empty.");
-			return true;
-		}
-		else{
-			//System.out.println("Stack is full.");
-			return false;
-		}
+		return front==-1;
 	}
 	public boolean isFull(){
-		if (top==size-1){
-			//System.out.println("Stack is Full.");
-			return true;
-		}
-		else{
-			//System.out.println("Stack is empty.");
-			return false;
-		}
+		return rear==size-1;
 	}
-	public void printStack(){
-		System.out.println("Element in stack are: ");
-		for (int i=0;i<top+1 ;i++ ) {
-			System.out.print(a[i]+" -> ");
-		}
-					System.out.println("");
+
+	public void push(int n){
+		a[++rear]=n;
 	}
+
+	public int pop(){
+		return a[front++];
+	}
+
+	public int displayRear(){
+		return a[rear];
+	}
+
+	public int displayFront(){
+		return a[front];
+	}
+
+	public void printQueue(){
+		       for (int i = front; i <= rear; i++)
+	           		System.out.print(a[i]+" ->");
+	        	System.out.println();        
+	}
+
 }
-class Stack{
+
+
+
+class QueueTest{
 	public static void main(String[] arg){
 		System.out.println("Enter the size of stack: ");
 		Scanner scanner=new Scanner(System.in);
 		int size= scanner.nextInt();
-		Node obj = new Node(size);
+		Queue obj = new Queue(size);
 		while(true){
 			System.out.println("1. To push");
 			System.out.println("2. To pop");
-			System.out.println("3. To display top element");
-			System.out.println("4. To print stack");
+			System.out.println("3. To display front element");
+			System.out.println("4. To display rear element");
+			System.out.println("5. To print queue");
 			//System.out.println("5. To check stack is empty ");
 			//System.out.println("6. To check stack is full");
 			System.out.println("0. To exit");
@@ -74,34 +66,34 @@ class Stack{
 						obj.push(p);
 					}
 					else
-						System.out.println("Stack is full.");
+						System.out.println("Queue is full.");
 					break;
 				case 2:
 					if(obj.isEmpty()==false){
-						int temp=obj.pop();
+						int temp = obj.pop();
 						System.out.println("Element popped "+temp);
 					}
 					else
-						System.out.println("Stack is empty.");
+						System.out.println("Queue is empty.");
 					break;
 				case 3:
 					if (obj.isEmpty()==false) {
-						int temp=obj.display();
-						System.out.println("Top element is "+temp);
+						int temp=obj.displayFront();
+						System.out.println("Front element is "+temp);
 						
 					}
 					break;
 				case 4:
 					if (obj.isEmpty()==false) {
-
-						obj.printStack();
+						int temp=obj.displayRear();
+						System.out.println("Rear element is "+temp);	
 					}
 					break;
 				case 5:
-					obj.isEmpty();
-					break;
-				case 6:
-					obj.isFull();
+					if (obj.isEmpty()==false) {
+
+						obj.printQueue();
+					}
 					break;
 				default:
 					System.out.println("Closing the program...");
